@@ -1,0 +1,72 @@
+[
+  {
+    "lat": 39.73302,
+    "lng": -75.00834,
+    "type": "interchange",
+    "name": "Exit 41",
+    "description": "Exit 41 <br/><a href = \"https://www.sjta.com/exit-41\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.70847,
+    "lng": -74.97786,
+    "type": "interchange",
+    "name": "Exit 38",
+    "description": "Exit 38 <br/><a href = \"https://www.sjta.com/exit-38\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.66869,
+    "lng": -74.89265,
+    "type": "interchange",
+    "name": "Exit 33",
+    "description": "Exit 33 <br/><a href = \"https://www.sjta.com/exit-33\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.61497,
+    "lng": -74.82963,
+    "type": "interchange",
+    "name": "Exit 28",
+    "description": "Exit 28 <br/><a href = \"https://www.sjta.com/exit-28\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.50962,
+    "lng": -74.68097,
+    "type": "interchange",
+    "name": "Exit 17",
+    "description": "Exit 17 <br/><a href = \"https://www.sjta.com/exit-17\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.44669,
+    "lng": -74.62021,
+    "type": "interchange",
+    "name": "Exit 12",
+    "description": "Exit 12 <br/><a href = \"https://www.sjta.com/exit-12\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.43374,
+    "lng": -74.58683,
+    "type": "interchange",
+    "name": "Exit 9",
+    "description": "Exit 9 <br/><a href = \"https://www.sjta.com/exit-9\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.40203,
+    "lng": -74.52418,
+    "type": "interchange",
+    "name": "Exit 5",
+    "description": "Exit 5 <br/><a href = \"https://www.sjta.com/exit-5\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.39177962258875,
+    "lng": -74.51032372222157,
+    "type": "gantry",
+    "name": "Pleasantville Toll Plaza",
+    "description": "Pleasantville Toll Plaza <br/><a href = \"https://www.sjta.com/exit-41\" target=\"_blank\">Details </a>"
+  },
+  {
+    "lat": 39.51371318827333,
+    "lng": -74.686514149208,
+    "type": "gantry",
+    "name": "Egg Harbor Toll Plaza",
+    "description": "Egg Harbor Toll Plaza <br/><a href = \"https://www.sjta.com/exit-17\" target=\"_blank\">Details </a>"
+  }
+]

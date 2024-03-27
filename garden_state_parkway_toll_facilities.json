@@ -1,0 +1,359 @@
+[
+	{
+		"lat": 40.97966266078757,
+		"lng": -74.07114757611724,
+		"type": "gantry",
+		"name": "Pascack Valley",
+		"description": "Pascack Valley<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 40.90840881131936,
+		"lng": -74.09751522619595,
+		"type": "gantry",
+		"name": "Bergen",
+		"description": "Bergen<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 39.006982549132196,
+		"lng": -74.86533136935493,
+		"type": "interchange",
+		"name": "Wildwood Ramp (Northbound)",
+		"description": "Wildwood (Northbound) <br /> <a href=\"https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf\" target=\"_blank\">Details</a></i>"
+	},
+	{
+		"lat": 40.805127711492624,
+		"lng": -74.1843032421231,
+		"type": "gantry",
+		"name": "Essex",
+		"description": "Essex<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 40.7034533808443,
+		"lng": -74.24638506064323,
+		"type": "gantry",
+		"name": "Union",
+		"description": "Union<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 40.48542647749342,
+		"lng": -74.30346112353588,
+		"type": "gantry",
+		"name": "Raritan",
+		"description": "Raritan<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 40.25042979413255,
+		"lng": -74.08167349210795,
+		"type": "gantry",
+		"name": "Asbury Park",
+		"description": "Asbury Park<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 39.99712478680219,
+		"lng": -74.20648964476356,
+		"type": "gantry",
+		"name": "Toms River",
+		"description": "Toms River<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 39.774536858382845,
+		"lng": -74.24525374813796,
+		"type": "gantry",
+		"name": "Barnegat",
+		"description": "Barnegat<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 39.61301527712338,
+		"lng": -74.4242477966653,
+		"type": "gantry",
+		"name": "New Gretna",
+		"description": "New Gretna<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 39.306735439498446,
+		"lng": -74.61829895554904,
+		"type": "gantry",
+		"name": "Great Egg SB",
+		"description": "Great Egg SB<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 39.193841081492735,
+		"lng": -74.70989836286729,
+		"type": "gantry",
+		"name": "Cape May",
+		"description": "Cape May<br /> <i>$1.50</i>"
+	},
+	{
+		"lat": 40.95998857641483,
+		"lng": -74.0654852051987,
+		"type": "interchange",
+		"name": "Paramus (Northbound)",
+		"description": "Paramus (Northbound) <br /> <a href = \"https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf\" target=\"_blank\">Details </a></i>"
+	},
+	{
+		"lat": 40.957846133118,
+		"lng": -74.06656065870894,
+		"type": "interchange",
+		"name": "Paramus (Southbound)",
+		"description": "Paramus (Southbound) <br /> <a href = \"https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf\" target=\"_blank\">Details </a></i>"
+	},
+	{
+		"lat": 40.905458150934166,
+		"lng": -74.10023764149632,
+		"type": "interchange",
+		"name": "Saddle Brook (Northbound)",
+		"description": "Saddle Brook (Northbound) <br /> <a href = \"https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf\" target=\"_blank\">Details </a></i>"
+	},
+	{
+		"lat": 40.878292,
+		"lng": -74.165733,
+		"type": "interchange",
+		"name": "Clifton (Northbound)",
+		"description": "Clifton (Northbound) Details"
+	},
+	{
+		"lat": 40.876939,
+		"lng": -74.168774,
+		"type": "interchange",
+		"name": "Clifton (Southbound)",
+		"description": "Clifton (Southbound) Details"
+	},
+	{
+		"lat": 40.852381,
+		"lng": -74.174490,
+		"type": "interchange",
+		"name": "Passaic (Northbound)",
+		"description": "Passaic (Northbound) Details"
+	},
+	{
+		"lat": 40.850310,
+		"lng": -74.175135,
+		"type": "interchange",
+		"name": "Passaic (Southbound)",
+		"description": "Passaic (Southbound) Details"
+	},
+	{
+		"lat": 40.829668,
+		"lng": -74.176651,
+		"type": "interchange",
+		"name": "Watchung (Northbound)",
+		"description": "Watchung (Northbound) Details"
+	},
+	{
+		"lat": 40.829456,
+		"lng": -74.177890,
+		"type": "interchange",
+		"name": "Watchung (Southbound)",
+		"description": "Watchung (Southbound) Details"
+	},
+	{
+		"lat": 40.783995,
+		"lng": -74.200702,
+		"type": "interchange",
+		"name": "Bloomfield (Northbound)",
+		"description": "Bloomfield (Northbound) Details"
+	},
+	{
+		"lat": 40.786951,
+		"lng": -74.199795,
+		"type": "interchange",
+		"name": "Bloomfield (Southbound)",
+		"description": "*Bloomfield (Southbound) Details"
+	},
+	{
+	    "lat": 40.755734,
+	    "lng": -74.207798,
+	    "type": "interchange",
+	    "name": "East Orange (Southbound)",
+	    "description": "East Orange (Southbound) Details"
+	},
+	{
+	    "lat": 40.739493,
+	    "lng": -74.216166,
+	    "type": "interchange",
+	    "name": "Irvington (Northbound)",
+	    "description": "Irvington (Northbound) Details"
+	},
+	{
+	    "lat": 40.739160,
+	    "lng": -74.217401,
+	    "type": "interchange",
+	    "name": "Irvington (Southbound)",
+	    "description": "Irvington (Southbound) Details"
+	},
+	{
+	    "lat": 40.709311,
+	    "lng": -74.248137,
+	    "type": "interchange",
+	    "name": "Union Ramp (Northbound)",
+	    "description": "Union Ramp (Northbound) Details"
+	},
+	{
+	    "lat": 40.482993,
+	    "lng": -74.302977,
+	    "type": "interchange",
+	    "name": "Sayreville (Southbound)",
+	    "description": "Sayreville (Southbound) Details"
+	},
+	{
+	    "lat": 40.421282,
+	    "lng": -74.215025,
+	    "type": "interchange",
+	    "name": "Matawan (Southbound)",
+	    "description": "Matawan (Southbound) Details"
+	},
+	{
+	    "lat": 40.421626,
+	    "lng": -74.206054,
+	    "type": "interchange",
+	    "name": "Keyport (Northbound)",
+	    "description": "Keyport (Northbound) Details"
+	},
+	{
+	    "lat": 40.421626,
+	    "lng": -74.206054,
+	    "type": "interchange",
+	    "name": "Keyport (Southbound)",
+	    "description": "Keyport (Southbound) Details"
+	},
+	{
+	    "lat": 40.372720,
+	    "lng": -74.143510,
+	    "type": "interchange",
+	    "name": "Holmdel (Northbound)",
+	    "description": "Holmdel (Northbound) Details"
+	},
+	{
+	    "lat": 40.375160,
+	    "lng": -74.150580,
+	    "type": "interchange",
+	    "name": "Holmdel (Southbound)",
+	    "description": "Holmdel (Southbound) Details"
+	},
+	{
+	    "lat": 40.339816,
+	    "lng": -74.101311,
+	    "type": "interchange",
+	    "name": "Red Bank (Northbound)",
+	    "description": "Red Bank (Northbound) Details"
+	},
+	{
+	    "lat": 40.337830,
+	    "lng": -74.102760,
+	    "type": "interchange",
+	    "name": "Red Bank (Southbound)",
+	    "description": "Red Bank (Southbound) Details"
+	},
+	{
+	    "lat": 40.284920,
+	    "lng": -74.083530,
+	    "type": "interchange",
+	    "name": "Eatontown (Northbound)",
+	    "description": "Eatontown (Northbound) Details"
+	},
+	{
+	    "lat": 40.174951,
+	    "lng": -74.098848,
+	    "type": "interchange",
+	    "name": "Belmar/Wall (Northbound)",
+	    "description": "Belmar/Wall (Northbound) Details"
+	},
+	{
+	    "lat": 40.174310,
+	    "lng": -74.101020,
+	    "type": "interchange",
+	    "name": "Belmar/Wall (Southbound)",
+	    "description": "Belmar/Wall (Southbound) Details"
+	},
+	{
+	    "lat": 40.10243382067626,
+	    "lng": -74.13925260108407,
+	    "type": "interchange",
+	    "name": "Brick (Southbound)",
+	    "description": "Brick (Southbound) <br /> <a href='https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf' target='_blank'>Details</a></i>"
+	},
+	{
+	    "lat": 40.10163448563131,
+	    "lng": -74.13891986639152,
+	    "type": "interchange",
+	    "name": "Brick (Northbound)",
+	    "description": "Brick (Northbound) <br /> <a href='https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf' target='_blank'>Details</a></i>"
+	},
+	{
+	    "lat": 40.064018298041496,
+	    "lng": -74.16396905412715,
+	    "type": "interchange",
+	    "name": "Lakewood (Southbound)",
+	    "description": "Lakewood (Southbound) <br /> <a href='https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf' target='_blank'>Details</a></i>"
+	},
+	{
+	    "lat": 40.063338431339034,
+	    "lng": -74.16266125552126,
+	    "type": "interchange",
+	    "name": "Lakewood (Northbound)",
+	    "description": "Lakewood (Northbound) <br /> <a href='https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf' target='_blank'>Details</a></i>"
+	},
+	{
+	    "lat": 39.90594986696987,
+	    "lng": -74.21291285321689,
+	    "type": "interchange",
+	    "name": "Berkeley (Southbound)",
+	    "description": "Berkeley (Southbound) <br /> <a href='https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf' target='_blank'>Details</a></i>"
+	},
+	{
+	    "lat": 39.893695928958664,
+	    "lng": -74.21132800689804,
+	    "type": "interchange",
+	    "name": "Berkeley (Northbound)",
+	    "description": "Berkeley (Northbound) <br /> <a href='https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf' target='_blank'>Details</a></i>"
+	},
+		{ 
+	    "lat": 39.86443455970464, 
+	    "lng": -74.21818800870736, 
+	    "type": "interchange", 
+	    "name": "Lacey (Northbound)", 
+	    "description": "Lacey (Northbound) Details"
+	},
+	{ 
+	    "lat": 39.86328013500461, 
+	    "lng": -74.22179258312185, 
+	    "type": "interchange", 
+	    "name": "Lacey (Southbound)", 
+	    "description": "Lacey (Southbound) Details"
+	},
+	{ 
+	    "lat": 39.79353581523983, 
+	    "lng": -74.2345767081678, 
+	    "type": "interchange", 
+	    "name": "Waretown (Northbound)", 
+	    "description": "Waretown (Northbound) Details"
+	},
+	{ 
+	    "lat": 39.795063053888, 
+	    "lng": -74.23917881904826, 
+	    "type": "interchange", 
+	    "name": "Waretown (Southbound)", 
+	    "description": "Waretown (Southbound) Details"
+	},
+	{ 
+	    "lat": 39.32196143417799, 
+	    "lng": -74.61482424891213, 
+	    "type": "interchange", 
+	    "name": "Somers Point Ramp (Southbound)", 
+	    "description": "Somers Point (Southbound) Details"
+	},
+	{ 
+	    "lat": 39.01061324382371, 
+	    "lng": -74.86729376737021, 
+	    "type": "interchange", 
+	    "name": "Wildwood Ramp (Southbound)", 
+	    "description": "Wildwood (Southbound) Details"
+	},
+	{ 
+	    "lat": 39.006982549132196, 
+	    "lng": -74.86533136935493, 
+	    "type": "interchange", 
+	    "name": "Wildwood Ramp (Northbound)", 
+	    "description": "Wildwood (Northbound) Details"
+	}
+]

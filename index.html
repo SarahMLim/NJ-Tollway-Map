@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Highlight Your Tollway</title>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      <!-- <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script> -->
+      <link rel="stylesheet" href="genmap.css">
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCKIByqrzdBh0I0c3r1L88v758pF-JIDY&callback=initMap" async defer></script>
+      <!-- <script src="markercluster.js"></script> -->
+      <!-- <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script> -->
+
+      <link rel="icon" href="favicon.png" type="image/x-icon">
+      <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+      <!-- <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script> -->
+      <script src="markercluster.js"></script>
+      <style>
+         table {
+         border-collapse: collapse;
+         width: 100%;
+         }
+         th, td {
+         border: 1px solid #dddddd;
+         text-align: left;
+         padding: 8px;
+         }
+         th {
+         background-color: #f2f2f2;
+         }
+         .auto-style1 {
+         font-family: Arial;
+         font-weight: bold;
+         }
+      </style>
+   </head>
+   <body>
+      <!-- Good link to map and other info: https://www.ezpassnj.com/en/about/facilities.shtml-->
+      <div id="floating-panel">
+         <img src="logo.png" alt="New Jersey E-ZPass">
+         <form id="tollwayType">
+            <label>
+            <input type="radio" name="tollwayOption" value="tollRoads" checked> Toll Roads
+            </label>
+            <label>
+            <input type="radio" name="tollwayOption" value="tollBridges"> Toll Bridges
+            </label>
+            <label>
+            <input type="radio" name="tollwayOption" value="tollTunnels"> Toll Tunnels
+            </label>
+         </form>
+         <div>
+            <b>Select Tollway: </b>    
+            <select id="whichTollwayToDisplay">
+               <option value="allTR">All Toll Roads</option>
+               <option value="ACE">Atlantic City Expressway</option>
+               <option value="GSP">Garden State Parkway</option>
+               <option value="NJTP">New Jersey Turn Pike</option>
+            </select>
+         </div>
+         <div class="btn-layer">
+            <div id="clearButtonContainer">
+               <button id="clearButton">Clear The Map</button>
+            </div>
+            <div id="trafficButtonContainer">
+               <button id="trafficButton">Show Traffic</button>
+            </div>
+         </div>
+      </div>
+      <div id="map"></div>
+      <div style="display: none;">
+         <div class="content">
+            <table border="1">
+               <tr>
+                  <td>
+                     <div id="roads">
+                        <h1 align="center">Toll Roads</h1>
+                        <section align="center" id="Atlantic-City-Expressway">
+                           <h2>Atlantic City Expressway</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              The Atlantic City Expressway uses a barrier toll system, with mainline toll plazas and ramp tolls. As of January 1, 2023, all passenger vehicles currently must pay a $4.55 toll at the Egg Harbor Toll Plaza, which is located east of the Farley Service Plaza at milepost 17.5, and a $1.35 toll near Pleasantville. Both mainline toll plazas have Express E-ZPass lanes through the center of the plaza. Tolls are also collected at seven entrances and exits. A $1.35 toll for cars is charged at the eastbound exits and westbound entrances at exits 5, 28, and 33, the westbound exit and eastbound entrance at exit 12, and all ramps at exit 9; in addition, a $0.70 toll for cars is charged at the eastbound exits and westbound entrances at exits 38 and 41.[13][14] In addition, a $4.55 E-ZPass only toll is charged for the westbound exit and eastbound entrance at exit 17.[4][15] E-ZPass users who frequently use the road receive a discount on their tolls.[13][14]
+                              Every year since 2013, with the exception of 2020 and 2021, eastbound tolls are waived at the Egg Harbor Toll Plaza between 5:00 and 6:00 pm on Friday before Memorial Day to promote the unofficial beginning of the summer tourist season at the Jersey Shore. Chickie's & Pete's, a local sports bar chain, pays for the tolls collected during this hour.[16][17] In October 2014, eastbound tolls were waived at the Egg Harbor and Pleasantville toll plazas on Tuesdays between noon and midnight to encourage midweek tourism to Atlantic City.
+                           </p>
+                           <p>
+                              The Atlantic City Expressway, officially numbered, but unsigned, as Route 446 and abbreviated A.C. Expressway, ACE, or ACX, and known locally as the Expressway, is a 44.19-mile (71.12 km) long toll road in the U.S. state of New Jersey, managed and operated by the South Jersey Transportation Authority (SJTA).
+                           </p>
+                        </section>
+                        <section align="center" id="Garden-State-Parkway">
+                           <h2>Garden State Parkway</h2>
+                           <p><i>E-ZPass is accepted.</i></p>
+                           <p>
+                              <a href="https://www.njta.com/media/3305/toll_rate_schedule_gsp-_final_2017-04-04.pdf" target="_blank">Official Toll Info</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.maikoff.net/gsp.html" target="_blank">List of exits and toll barriers.</a>     
+                           </p>
+                           <p>
+                              The Garden State Parkway (GSP) is a controlled-access toll road that stretches the northâ€“south length of eastern New Jersey from the state's southernmost tip near Cape May north to the New York state line at Montvale. Its name refers to New Jersey's nickname, the "Garden State". 
+                           </p>
+                           <p>
+                              The Garden State Parkway uses an open system of tolling in which flat-rate tolls are collected at numerous toll plazas placed along the mainline and at certain interchanges. This contrasts with the New Jersey Turnpike, which uses a closed system in which a motorist receives a ticket with the toll rates at the highway's entrance, and turns in the ticket along with the toll upon exiting at toll gates. Tolls can be paid by using cash or the E-ZPass electronic toll collection system.[74]
+                              As of January 1, 2023, the standard car toll is $1.05 for cash and $1.01 for E-ZPass on the main road at two-way toll plazas and $2.10 for cash and $2.02 for E-ZPass at one-way toll plazas. Some entrances and exits require a toll of either $0.75, $1.05, $1.45, or $2.10 for cash and $0.70, $1.01, $1.39, or $2.02 for E-ZPass.[75][76] Additional E-ZPass discounts are available for off-peak travel, senior citizens, drivers of green vehicles, and trailers.[74]
+                           </p>
+                        </section>
+                        <section align="center" id="New-Jersey-Turnpike-Western-Spur">
+                           <h2>New Jersey Turnpike Western Spur</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>The New Jersey Turnpike Western Spur is...</p>
+                        </section>
+                        <section align="center" id="New-Jersey-Turnpike-Newark-Bay-Extension">
+                           <h2>New Jersey Turnpike Newark Bay Extension</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>The New Jersey Turnpike Newark Bay Extension is...</p>
+                        </section>
+                        <section align="center" id="New-Jersey-Turnpike-Pearl-Harbor-Memorial-Expressway">
+                           <h2>New Jersey Turnpike Pearl Harbor Memorial Expressway</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>The New Jersey Turnpike Pearl Harbor Memorial Expressway is...</p>
+                        </section>
+                     </div>
+                  </td>
+                  <td>
+                     <div id="bridges">
+                        <h1 align="center">Toll Bridges</h1>
+                        <section align="center" id="Tacony-Palmyra-Bridge">
+                           <h2>Tacony Palmyra Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              <i>Tolls are <b>only</b> incurred when entering Pennsylvania from New Jersey.</i>
+                           <table>
+                              <thead>
+                                 <tr>
+                                    <th>Fare Schedule by Class</th>
+                                    <th>Class</th>
+                                    <th>Cash</th>
+                                    <th>E-Z Pass</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>Passenger Car, Van, Motorcycle, Light Truck</td>
+                                    <td>Class 1</td>
+                                    <td>$4.00</td>
+                                    <td>$3.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Two Axle Bus/RV/Std Dual-wheel Pickup Truck</td>
+                                    <td>Class 2</td>
+                                    <td>$6.00</td>
+                                    <td>$5.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Three Axle Bus/RV</td>
+                                    <td>Class 3</td>
+                                    <td>$9.00</td>
+                                    <td>$8.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Additional Axles being pulled by Class 1,2,3</td>
+                                    <td>Class 4</td>
+                                    <td>$3.00</td>
+                                    <td>$2.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Two Axle Truck</td>
+                                    <td>Class 5</td>
+                                    <td>$12.00</td>
+                                    <td>$12.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Three Axle Truck</td>
+                                    <td>Class 6</td>
+                                    <td>$18.00</td>
+                                    <td>$18.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Four Axle Truck</td>
+                                    <td>Class 7</td>
+                                    <td>$24.00</td>
+                                    <td>$24.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Five Axle Truck</td>
+                                    <td>Class 8</td>
+                                    <td>$30.00</td>
+                                    <td>$30.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Six Axle Truck</td>
+                                    <td></td>
+                                    <td>$36.00</td>
+                                    <td>$36.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Additional Axles being pulled by Class 5,6,7,8</td>
+                                    <td>Class 9</td>
+                                    <td>$6.00</td>
+                                    <td>$6.00</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           </p>
+                           <p>&nbsp;</p/>
+                           <p>The  <a href="https://www.bcbridges.org/tacony-palmyra-bridge/" target="_blank"> Tacony-Palmyra Bridge</a> 
+                              is owned  and maintained by the <a href="https://www.bcbridges.org/" target="_blank">Burlington County Bridge Commission</a> of New Jersey. It is a combination steel tied-arch and double-leaf bascule bridge across the Delaware River that connects New Jersey Route 73 in Palmyra, New Jersey with Pennsylvania Route 73 in the Tacony section of Philadelphia.
+                           </p>
+                        </section>
+                        <section align="center" id="Burlington-Bristol-Bridge">
+                           <h2>Burlington Bristol Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              <i>Tolls are <b>only</b> incurred when entering Pennsylvania from New Jersey.</i>
+                           <table>
+                              <thead>
+                                 <tr>
+                                    <th>Fare Schedule by Class</th>
+                                    <th>Class</th>
+                                    <th>Cash</th>
+                                    <th>E-Z Pass</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>Passenger Car, Van, Motorcycle, Light Truck</td>
+                                    <td>Class 1</td>
+                                    <td>$4.00</td>
+                                    <td>$3.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Two Axle Bus/RV/Std Dual-wheel Pickup Truck</td>
+                                    <td>Class 2</td>
+                                    <td>$6.00</td>
+                                    <td>$5.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Three Axle Bus/RV</td>
+                                    <td>Class 3</td>
+                                    <td>$9.00</td>
+                                    <td>$8.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Additional Axles being pulled by Class 1,2,3</td>
+                                    <td>Class 4</td>
+                                    <td>$3.00</td>
+                                    <td>$2.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Two Axle Truck</td>
+                                    <td>Class 5</td>
+                                    <td>$12.00</td>
+                                    <td>$12.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Three Axle Truck</td>
+                                    <td>Class 6</td>
+                                    <td>$18.00</td>
+                                    <td>$18.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Four Axle Truck</td>
+                                    <td>Class 7</td>
+                                    <td>$24.00</td>
+                                    <td>$24.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Five Axle Truck</td>
+                                    <td>Class 8</td>
+                                    <td>$30.00</td>
+                                    <td>$30.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Six Axle Truck</td>
+                                    <td></td>
+                                    <td>$36.00</td>
+                                    <td>$36.00</td>
+                                 </tr>
+                                 <tr>
+                                    <td>Additional Axles being pulled by Class 5,6,7,8</td>
+                                    <td>Class 9</td>
+                                    <td>$6.00</td>
+                                    <td>$6.00</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           </p>
+                           <p>
+                              The <a href="https://www.bcbridges.org/burlington-bristol-bridge/" target="_blank"> Burlington-Bristol Bridge</a> is owned  and maintained by the <a href="https://www.bcbridges.org/" target="_blank">Burlington County Bridge Commission</a> of New Jersey. It is a truss bridge with a lift span crossing the Delaware River from Burlington, New Jersey to Bristol Township, Pennsylvania in the United States. Construction of the bridge started on April 1, 1930, and the bridge opened to traffic on May 2, 1931.
+                           </p>
+                        </section>
+                        <section align="center" id="Ben-Franklin-Bridge">
+                           <h2>Ben Franklin Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              <i>Tolls are <b>only</b> incurred when entering Pennsylvania from New Jersey.</i>
+                           <table>
+                              <tr>
+                                 <th>Vehicle Classification</th>
+                                 <th>Toll</th>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Passenger vehicles with 2 axles</i></span> - including motorcycles &amp; small trucks 7,000 lbs. and less gross vehicle weight (Class 1 &amp; 2)</td>
+                                 <td>$5.00</td>
+                              </tr>
+                              <tr>
+                                 <td>&nbsp;&nbsp;&nbsp;Extra axles</td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Trucks, mobile homes and recreation vehicles</i></span>- gross vehicle weight 7,001 lbs. and up per axle</td>
+                                 <td>$7.50 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Buses<i></span></td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                           </table>
+                           <p>&nbsp;</p/>
+                           <table>
+                              <tr>
+                                 <th>Discounts</th>
+                                 <th>Amount</th>
+                              </tr>
+                              <tr>
+                                 <td>Any <a href="https://www.drpa.org/" target="_blank">DRPA</a>-issued E-ZPass tag that crosses one of the four DRPA bridges 18 times in a calendar month gets a 
+                                    <a href="https://www.drpa.org/travel/frequent-bridge-travelers.html" target="_blank">credit.</a>
+                                 </td>
+                                 <td>$18.00</td>
+                              </tr>
+                              <tr>
+                                 <td>Seniors aged 65 and over with an NJ E-ZPass can use 
+                                    <a href="https://www.drpa.org/travel/senior-discount.html" target="_blank">a discount program.</a>
+                                 </td>
+                                 <td>Pay $2.50 per trip instead of regular rate.</td>
+                              </tr>
+                           </table>
+                           <br class="auto-style1"/><span class="auto-style1">Note:</span> 
+                           <a href="https://www.drpa.org/" target="_blank">DRPA</a> stands for 
+                           <a href="https://www.drpa.org/" target="_blank">"Delaware River Port Authority"</a> 
+                           </p>
+                           <p>
+                              The Benjamin Franklin Bridge, originally named the Delaware River Bridge and known locally as the Ben Franklin Bridge, is a suspension bridge across the Delaware River connecting Philadelphia, Pennsylvania, and Camden, New Jersey.
+                           </p>
+                        </section>
+                        <section align="center" id="Betsy-Ross-Bridge">
+                           <h2>Betsy Ross Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              <i>Tolls are <b>only</b> incurred when entering Pennsylvania from New Jersey.</i>
+                           <table>
+                              <tr>
+                                 <th>Vehicle Classification</th>
+                                 <th>Toll</th>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Passenger vehicles with 2 axles</i></span> - including motorcycles &amp; small trucks 7,000 lbs. and less gross vehicle weight (Class 1 &amp; 2)</td>
+                                 <td>$5.00</td>
+                              </tr>
+                              <tr>
+                                 <td>&nbsp;&nbsp;&nbsp;Extra axles</td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Trucks, mobile homes and recreation vehicles</i></span>- gross vehicle weight 7,001 lbs. and up per axle</td>
+                                 <td>$7.50 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Buses<i></span></td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                           </table>
+                           <p>&nbsp;</p/>
+                           <table>
+                              <tr>
+                                 <th>Discounts</th>
+                                 <th>Amount</th>
+                              </tr>
+                              <tr>
+                                 <td>Any <a href="https://www.drpa.org/" target="_blank">DRPA</a>-issued E-ZPass tag that crosses one of the four DRPA bridges 18 times in a calendar month gets a 
+                                    <a href="https://www.drpa.org/travel/frequent-bridge-travelers.html" target="_blank">credit.</a>
+                                 </td>
+                                 <td>$18.00</td>
+                              </tr>
+                              <tr>
+                                 <td>Seniors aged 65 and over with an NJ E-ZPass can use 
+                                    <a href="https://www.drpa.org/travel/senior-discount.html" target="_blank">a discount program.</a>
+                                 </td>
+                                 <td>Pay $2.50 per trip instead of regular rate.</td>
+                              </tr>
+                           </table>
+                           <br class="auto-style1"/><span class="auto-style1">Note:</span> 
+                           <a href="https://www.drpa.org/" target="_blank">DRPA</a> stands for 
+                           <a href="https://www.drpa.org/" target="_blank">"Delaware River Port Authority"</a> 
+                           </p>
+                           <p>
+                              The Betsy Ross Bridge, also known as the Ross Memorial Bridge, is a continuous steel truss bridge spanning the Delaware River from Philadelphia, Pennsylvania to Pennsauken, New Jersey. It was built from 1969 to 1974, and opened in April 1976, during the American Bicentennial Year. 
+                           </p>
+                        </section>
+                        <section align="center" id="Commodore-John-Barry-Bridge">
+                           <h2>Commodore John Barry Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              <i>Tolls are <b>only</b> incurred when entering Pennsylvania from New Jersey.</i>
+                           <table>
+                              <tr>
+                                 <th>Vehicle Classification</th>
+                                 <th>Toll</th>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Passenger vehicles with 2 axles</i></span> - including motorcycles &amp; small trucks 7,000 lbs. and less gross vehicle weight (Class 1 &amp; 2)</td>
+                                 <td>$5.00</td>
+                              </tr>
+                              <tr>
+                                 <td>&nbsp;&nbsp;&nbsp;Extra axles</td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Trucks, mobile homes and recreation vehicles</i></span>- gross vehicle weight 7,001 lbs. and up per axle</td>
+                                 <td>$7.50 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Buses<i></span></td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                           </table>
+                           <p>&nbsp;</p/>
+                           <table>
+                              <tr>
+                                 <th>Discounts</th>
+                                 <th>Amount</th>
+                              </tr>
+                              <tr>
+                                 <td>Any <a href="https://www.drpa.org/" target="_blank">DRPA</a>-issued E-ZPass tag that crosses one of the four DRPA bridges 18 times in a calendar month gets a 
+                                    <a href="https://www.drpa.org/travel/frequent-bridge-travelers.html" target="_blank">credit.</a>
+                                 </td>
+                                 <td>$18.00</td>
+                              </tr>
+                              <tr>
+                                 <td>Seniors aged 65 and over with an NJ E-ZPass can use 
+                                    <a href="https://www.drpa.org/travel/senior-discount.html" target="_blank">a discount program.</a>
+                                 </td>
+                                 <td>Pay $2.50 per trip instead of regular rate.</td>
+                              </tr>
+                           </table>
+                           <br class="auto-style1"/><span class="auto-style1">Note:</span> 
+                           <a href="https://www.drpa.org/" target="_blank">DRPA</a> stands for 
+                           <a href="https://www.drpa.org/" target="_blank">"Delaware River Port Authority"</a> 
+                           </p>
+                           <p>
+                              <span class="auto-style1">General info:</span> the Commodore Barry Bridge (also known as the Commodore John Barry Bridge or John Barry Bridge) is a cantilever bridge that spans the Delaware River from Chester, Pennsylvania to Bridgeport, New Jersey, in Logan Township. It is named after John Barry, an American Revolutionary War hero and Philadelphia resident.
+                           </p>
+                        </section>
+                        <section align="center" id="Walt-Whitman-Bridge">
+                           <h2>Walt Whitman Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              <i>Tolls are <b>only</b> incurred when entering Pennsylvania from New Jersey.</i>
+                           <table>
+                              <tr>
+                                 <th>Vehicle Classification</th>
+                                 <th>Toll</th>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Passenger vehicles with 2 axles</i></span> - including motorcycles &amp; small trucks 7,000 lbs. and less gross vehicle weight (Class 1 &amp; 2)</td>
+                                 <td>$5.00</td>
+                              </tr>
+                              <tr>
+                                 <td>&nbsp;&nbsp;&nbsp;Extra axles</td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Trucks, mobile homes and recreation vehicles</i></span>- gross vehicle weight 7,001 lbs. and up per axle</td>
+                                 <td>$7.50 per axle</td>
+                              </tr>
+                              <tr>
+                                 <td><span class="auto-style1"><i>&nbsp;&nbsp;Buses<i></span></td>
+                                 <td>$3.75 per axle</td>
+                              </tr>
+                           </table>
+                           <p>&nbsp;</p/>
+                           <table>
+                              <tr>
+                                 <th>Discounts</th>
+                                 <th>Amount</th>
+                              </tr>
+                              <tr>
+                                 <td>Any <a href="https://www.drpa.org/" target="_blank">DRPA</a>-issued E-ZPass tag that crosses one of the four DRPA bridges 18 times in a calendar month gets a 
+                                    <a href="https://www.drpa.org/travel/frequent-bridge-travelers.html" target="_blank">credit.</a>
+                                 </td>
+                                 <td>$18.00</td>
+                              </tr>
+                              <tr>
+                                 <td>Seniors aged 65 and over with an NJ E-ZPass can use 
+                                    <a href="https://www.drpa.org/travel/senior-discount.html" target="_blank">a discount program.</a>
+                                 </td>
+                                 <td>Pay $2.50 per trip instead of regular rate.</td>
+                              </tr>
+                           </table>
+                           <br class="auto-style1"/><span class="auto-style1">Note:</span> 
+                           <a href="https://www.drpa.org/" target="_blank">DRPA</a> stands for 
+                           <a href="https://www.drpa.org/" target="_blank">"Delaware River Port Authority"</a> 
+                           </p>
+                           <p>
+                              The Walt Whitman Bridge is a single-level suspension bridge spanning the Delaware River from Philadelphia in the west to Gloucester City in Camden County, New Jersey in the east. The bridge is named after American poet and essayist Walt Whitman, who resided in nearby Camden toward the end of his life.
+                           </p>
+                        </section>
+                        <section align="center" id="Delaware-Water-Gap-Toll-Bridge">
+                           <h2>Delaware Water Gap Toll Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              The Delaware Water Gap Toll Bridge (also known as the Interstate 80 Toll Bridge) is a toll bridge that carries Interstate 80 across the Delaware River at the Delaware Water Gap, connecting Hardwick Township, Warren County, New Jersey, and Delaware Water Gap, Monroe County, Pennsylvania, in the United States. 
+                           </p>
+                        </section>
+                        <section align="center" id="Easton-Phillipsburg-Toll-Bridge">
+                           <h2>Easton-Phillipsburg Toll Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              The toll plaza collects only westbound lanes going into Pennsylvania, and includes the E-ZPass system. As of April 11, 2021, the toll rate per car is $3.00, or $1.25 if E-ZPass is used.
+                           </p>
+                           <p>
+                              The Eastonâ€“Phillipsburg Toll Bridge is a modified Pennsylvania (Petit) through truss bridge that carries U.S. Route 22 over the Delaware River. The bridge is located between Easton, Pennsylvania and Phillipsburg, New Jersey in the Lehigh Valley.
+                           </p>
+                        </section>
+                        <section align="center" id="I-78-Toll-Bridge">
+                           <h2>I-78 Toll Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              Tolls on the Interstate 78 Toll Bridge are incurred only by motorists leaving New Jersey and entering Pennsylvania. There is no toll for those leaving Pennsylvania and entering New Jersey. On April 11, 2021, tolls on the I-78 Toll Bridge increased to $1.25 for motorists entering Pennsylvania with E-ZPass and $3.00 for motorists entering Pennsylvania without E-ZPass. An additional toll increase is planned in 2024.[
+                           </p>
+                           <p>
+                              The Interstate 78 Toll Bridge (I-78 Toll Bridge) carries Interstate 78 across the Delaware River between Williams Township, Pennsylvania and Phillipsburg, New Jersey in the Lehigh Valley region of eastern Pennsylvania and western New Jersey in the United States. 
+                           </p>
+                        </section>
+                        <section align="center" id="Milford-Montague-Bridge">
+                           <h2>Milford-Montague Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              - Vehicle                     
+                           <li>Automobile</li>
+                           <li>2-Axle Truck</li>
+                           <li>3-Axle Truck</li>
+                           <li>4-Axle Truck</li>
+                           <li>5-Axle Truck</li>
+                           <li>6-Axle Truck</li>
+                           <li>7-Axle Truck</li>
+                           - Cash toll <br>
+                           <li>$3.00</li>
+                           <li>$10.00</li>
+                           <li>$15.00</li>
+                           <li>$20.00</li>
+                           <li>$25.00</li>
+                           <li>$30.00</li>
+                           <li>$45.00</li>
+                           - E-ZPass toll <br>  
+                           <li>$1.25</li>
+                           <li>$9.00</li>
+                           <li>$13.50</li>
+                           <li>$18.00</li>
+                           <li>$22.50</li>
+                           <li>$27.00</li>
+                           <li>$31.50</li>
+                           Frequent commuters qualify for a 20% discount off the regular E-ZPass rate.
+                           </p>
+                           <p>
+                              The Milfordâ€“Montague Toll Bridge (also known as the US 206 Toll Bridge) is a truss bridge that crosses the Delaware River, connecting Montague Township, New Jersey to Dingman Township, Pennsylvania on U.S. Route 206, near the town of Milford. 
+                           </p>
+                        </section>
+                        <section align="center" id="New-Hope-Lambertville-Bridge">
+                           <h2>New Hope-Lambertville Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              The New Hopeâ€“Lambertville Bridge, officially called the New Hopeâ€“Lambertville Toll Supported Bridge, is a six-span, 1,053-foot (321 m)-long bridge spanning the Delaware River that connects Lambertville, New Jersey and New Hope, Pennsylvania.
+                           </p>
+                        </section>
+                        <section align="center" id="Portland-Columbia-Toll-Bridge">
+                           <h2>Portland-Columbia Toll Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              The Portlandâ€“Columbia Toll Bridge is a toll bridge over the Delaware River between Pennsylvania Route 611 at Portland, Pennsylvania, and U.S. Route 46 in the Columbia section of Knowlton Township, New Jersey, United States. It is owned and operated by the Delaware River Joint Toll Bridge Commission.
+                           </p>
+                        </section>
+                        <section align="center" id="Trenton-Morrisville-Toll-Bridge">
+                           <h2>Trenton-Morrisville Toll Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              The Trentonâ€“Morrisville Toll Bridge is one of three road bridges connecting Trenton, New Jersey with Morrisville, Pennsylvania. Opened on December 1, 1952, it carries U.S. Route 1 (US 1) and is owned and operated by the Delaware River Joint Toll Bridge Commission.
+                           </p>
+                        </section>
+                        <section align="center" id="Townsends-Inlet-Bridge">
+                           <h2>Townsends Inlet Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              Townsends Inlet is an inlet connecting Townsend Sound with the Atlantic Ocean in Cape May County, New Jersey.
+                           </p>
+                        </section>
+                        <section align="center" id="Middle-Thorofare-Bridge">
+                           <h2>Middle Thorofare Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>The Middle Thorofare Bridge is...</p>
+                        </section>
+                        <section align="center" id="Ocean-City-Longport-Bridge">
+                           <h2>Ocean City-Longport Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              Located in New Jersey, the Ocean City Longport Bridge is a major bridge facility. The Ocean City Longport Bridge is one of the most traveled bridges in New Jersey.
+                           </p>
+                        </section>
+                        <section align="center" id="Grassy-Sound-Bridge">
+                           <h2>Grassy Sound Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              Located in Wildwood/Stone Harbor, NJ, the Grassy Sound Bridge is a major bridge facility. The Grassy Sound Bridge is one of the busiest in New Jersey.
+                              Here on Uproad.com, you'll find the latest Grassy Sound Bridge toll information. From the latest estimated Grassy Sound Bridge toll prices to payment options, Uproad lets you know the rules of the road.
+                           </p>
+                        </section>
+                        <section align="center" id="Corsons-Inlet-Bridge">
+                           <h2>Corsons Inlet Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>
+                              Toll revenue collected at each bridge location began as a $0.25 toll for class 1 vehicles (includes passenger cars, pickup trucks and vans). There have been 3 toll rate hikes over the years. The 1st toll rate increase was in 1978, when the complete toll structure was revised. This was done because revenue was not increasing enough to cover construction and maintenance costs. The rate went from $0.25 to $0.30. In 1984 it was determined that there was again a need to cover construction and maintenance costs with existing toll revenue not meeting the needs. The rate went from $0.30 to $0.40. The last time rates were increased was in 1988 when again the costs of construction and maintenance repairs were rising. This toll rate increase went from $0.40 to $0.50.
+                           </p>
+                           <p>
+                              The last bridge to be constructed by the Commission is Corsons Inlet Bridge. The bridge is located in Strathmere and at the south end of Ocean City. An inlet, a short distance from the bridge, feeds from the Atlantic Ocean, but is currently impassable to marine vessels. The back bays are a favorite fishing area.
+                           </p>
+                        </section>
+                        <section align="center" id="Dingmans-Ferry-Bridge">
+                           <h2>Dingmans Ferry Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are ????</p>
+                           <p>
+                              The Dingmans Bridge (also known as the Dingman's Ferry Bridge) is a toll bridge across the Delaware River between Delaware Township, Pennsylvania and Sandyston Township, New Jersey. Owned and operated by the Dingmans Choice and Delaware Bridge Company, it is the last privately-owned toll bridge on the Delaware and one of the few remaining in the United States. 
+                           </p>
+                        </section>
+                        <section align="center" id="Margate-Bridge">
+                           <h2>Margate Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p>The tolls are $2.25 per trip</p>
+                           <p>
+                              The Margate Bridge is privately owned and crosses the bay and marshes between Absecon Island and the mainland.
+                              From Margate, access to the bridge is from Jerome Avenue. Traffic over the bridge flows onto East Mill Road in Northfield, NJ.
+                           </p>
+                        </section>
+                        <section align="center" id="George-Washington-Bridge">
+                           <h2>George Washington Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p><strong>New Jersey to New York</strong></p>
+                           <p>Cars</p>
+                           <li>Toll by mail:  $17</li>
+                           <li>E-ZPass issued from New Jersey or New York:  $14.75 during peak hours, $12.75 during off peak hours.</li>
+                           <li>E-ZPass issued from any other state:  $17.00 during peak hours, $17.00 during off peak hours. IE the toll by mail rate.</li>
+                           <p>Motorcycles</p>
+                           <li>Toll by mail:  $17 </li>
+                           <li>E-ZPass  issued from New Jersey or New York:  $13.75 during peak hours,  $11.75 during off-peak hours</li>
+                           <li>E-ZPass issued from any other state:   $17.00 during peak hours,  $17.00 during off-peak hours.  IE the toll by mail rate.</li>
+                           <p><strong> New  York to New Jersey</strong></p>
+                           <p>Passenger vehicles: 0</p>
+                           <p>Notice that tolls are only collected for eastbound traffic going from New Jersey to New York.</p>
+                           <p>For toll rates for <strong>trucks and other vehicles,</strong> see: </p>
+                           <a href="https://www.panynj.gov/bridges-tunnels/en/tolls.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/tolls.html</a>                     
+                           <p>As with passenger vehicles, tolls are only charged when travelling eastbound from New Jersey into New York.</p>
+                           <p>As of 2023,  frequent users traveling more than three trips per month can receive discounts under the "Staten Island Bridges Plan" ($9.25 per trip for cars).</p>
+                           <p>Website for the Outerbridge Crossing Bridge: <a href="https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html</a></p>
+                        </section>
+                        <section align="center" id="Bayonne-Bridge">
+                           <h2>Bayonne Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p><strong>New Jersey to New York</strong></p>
+                           <p>Cars</p>
+                           <li>Toll by mail:  $17</li>
+                           <li>E-ZPass issued from New Jersey or New York:  $14.75 during peak hours, $12.75 during off peak hours.</li>
+                           <li>E-ZPass issued from any other state:  $17.00 during peak hours, $17.00 during off peak hours. IE the toll by mail rate.</li>
+                           <p>Motorcycles</p>
+                           <li>Toll by mail:  $17 </li>
+                           <li>E-ZPass  issued from New Jersey or New York:  $13.75 during peak hours,  $11.75 during off-peak hours</li>
+                           <li>E-ZPass issued from any other state:   $17.00 during peak hours,  $17.00 during off-peak hours.  IE the toll by mail rate.</li>
+                           <p><strong> New  York to New Jersey</strong></p>
+                           <p>Passenger vehicles: 0</p>
+                           <p>Notice that tolls are only collected for eastbound traffic going from New Jersey to New York.</p>
+                           <p>For toll rates for <strong>trucks and other vehicles,</strong> see: </p>
+                           <a href="https://www.panynj.gov/bridges-tunnels/en/tolls.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/tolls.html</a>                     
+                           <p>As with passenger vehicles, tolls are only charged when travelling eastbound from New Jersey into New York.</p>
+                           <p>As of 2023,  frequent users traveling more than three trips per month can receive discounts under the "Staten Island Bridges Plan" ($9.25 per trip for cars).</p>
+                           <p>Website for the Outerbridge Crossing Bridge: <a href="https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html</a></p>
+                        </section>
+                        <section align="center" id="Goethals-Bridge">
+                           <h2>Goethals Bridge</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p><strong>New Jersey to New York</strong></p>
+                           <p>Cars</p>
+                           <li>Toll by mail:  $17</li>
+                           <li>E-ZPass issued from New Jersey or New York:  $14.75 during peak hours, $12.75 during off peak hours.</li>
+                           <li>E-ZPass issued from any other state:  $17.00 during peak hours, $17.00 during off peak hours. IE the toll by mail rate.</li>
+                           <p>Motorcycles</p>
+                           <li>Toll by mail:  $17 </li>
+                           <li>E-ZPass  issued from New Jersey or New York:  $13.75 during peak hours,  $11.75 during off-peak hours</li>
+                           <li>E-ZPass issued from any other state:   $17.00 during peak hours,  $17.00 during off-peak hours.  IE the toll by mail rate.</li>
+                           <p><strong> New  York to New Jersey</strong></p>
+                           <p>Passenger vehicles: 0</p>
+                           <p>Notice that tolls are only collected for eastbound traffic going from New Jersey to New York.</p>
+                           <p>For toll rates for <strong>trucks and other vehicles,</strong> see: </p>
+                           <a href="https://www.panynj.gov/bridges-tunnels/en/tolls.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/tolls.html</a>                     
+                           <p>As with passenger vehicles, tolls are only charged when travelling eastbound from New Jersey into New York.</p>
+                           <p>As of 2023,  frequent users traveling more than three trips per month can receive discounts under the "Staten Island Bridges Plan" ($9.25 per trip for cars).</p>
+                           <p>Website for the Outerbridge Crossing Bridge: <a href="https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html</a></p>
+                        </section>
+                        <section align="center" id="Outerbridge-Crossing">
+                           <h2>Outerbridge Crossing</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p><strong>New Jersey to New York</strong></p>
+                           <p>Cars</p>
+                           <li>Toll by mail:  $17</li>
+                           <li>E-ZPass issued from New Jersey or New York:  $14.75 during peak hours, $12.75 during off peak hours.</li>
+                           <li>E-ZPass issued from any other state:  $17.00 during peak hours, $17.00 during off peak hours. IE the toll by mail rate.</li>
+                           <p>Motorcycles</p>
+                           <li>Toll by mail:  $17 </li>
+                           <li>E-ZPass  issued from New Jersey or New York:  $13.75 during peak hours,  $11.75 during off-peak hours</li>
+                           <li>E-ZPass issued from any other state:   $17.00 during peak hours,  $17.00 during off-peak hours.  IE the toll by mail rate.</li>
+                           <p><strong> New  York to New Jersey</strong></p>
+                           <p>Passenger vehicles: 0</p>
+                           <p>Notice that tolls are only collected for eastbound traffic going from New Jersey to New York.</p>
+                           <p>For toll rates for <strong>trucks and other vehicles,</strong> see: </p>
+                           <a href="https://www.panynj.gov/bridges-tunnels/en/tolls.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/tolls.html</a>                     
+                           <p>As with passenger vehicles, tolls are only charged when travelling eastbound from New Jersey into New York.</p>
+                           <p>As of 2023,  frequent users traveling more than three trips per month can receive discounts under the "Staten Island Bridges Plan" ($9.25 per trip for cars).</p>
+                           <p>Website for the Outerbridge Crossing Bridge: <a href="https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html</a></p>
+                        </section>
+                     </div>
+                  </td>
+                  <td>
+                     <div id="tunnels">
+                        <h1 align="center">Toll Tunnels</h1>
+                        <section align="center" id="Lincoln-Tunnel">
+                           <h2>Lincoln Tunnel</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p><strong>New Jersey to New York</strong></p>
+                           <p>Cars</p>
+                           <li>Toll by mail:  $17</li>
+                           <li>E-ZPass issued from New Jersey or New York:  $14.75 during peak hours, $12.75 during off peak hours.</li>
+                           <li>E-ZPass issued from any other state:  $17.00 during peak hours, $17.00 during off peak hours. IE the toll by mail rate.</li>
+                           <p>Motorcycles</p>
+                           <li>Toll by mail:  $17 </li>
+                           <li>E-ZPass  issued from New Jersey or New York:  $13.75 during peak hours,  $11.75 during off-peak hours</li>
+                           <li>E-ZPass issued from any other state:   $17.00 during peak hours,  $17.00 during off-peak hours.  IE the toll by mail rate.</li>
+                           <p><strong> New  York to New Jersey</strong></p>
+                           <p>Passenger vehicles: 0</p>
+                           <p>Notice that tolls are only collected for eastbound traffic going from New Jersey to New York.</p>
+                           <p>For toll rates for <strong>trucks and other vehicles,</strong> see: </p>
+                           <a href="https://www.panynj.gov/bridges-tunnels/en/tolls.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/tolls.html</a>                     
+                           <p>As with passenger vehicles, tolls are only charged when travelling eastbound from New Jersey into New York.</p>
+                           <p>As of 2023,  frequent users traveling more than three trips per month can receive discounts under the "Staten Island Bridges Plan" ($9.25 per trip for cars).</p>
+                           <p>Website for the Outerbridge Crossing Bridge: <a href="https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html</a></p>
+                        </section>
+                        <section align="center" id="Holland-Tunnel">
+                           <h2>Holland Tunnel</h2>
+                           <p>E-ZPass is accepted.</p>
+                           <p><strong>New Jersey to New York</strong></p>
+                           <p>Cars</p>
+                           <li>Toll by mail:  $17</li>
+                           <li>E-ZPass issued from New Jersey or New York:  $14.75 during peak hours, $12.75 during off peak hours.</li>
+                           <li>E-ZPass issued from any other state:  $17.00 during peak hours, $17.00 during off peak hours. IE the toll by mail rate.</li>
+                           <p>Motorcycles</p>
+                           <li>Toll by mail:  $17 </li>
+                           <li>E-ZPass  issued from New Jersey or New York:  $13.75 during peak hours,  $11.75 during off-peak hours</li>
+                           <li>E-ZPass issued from any other state:   $17.00 during peak hours,  $17.00 during off-peak hours.  IE the toll by mail rate.</li>
+                           <p><strong> New  York to New Jersey</strong></p>
+                           <p>Passenger vehicles: 0</p>
+                           <p>Notice that tolls are only collected for eastbound traffic going from New Jersey to New York.</p>
+                           <p>For toll rates for <strong>trucks and other vehicles,</strong> see: </p>
+                           <a href="https://www.panynj.gov/bridges-tunnels/en/tolls.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/tolls.html</a>                     
+                           <p>As with passenger vehicles, tolls are only charged when travelling eastbound from New Jersey into New York.</p>
+                           <p>As of 2023,  frequent users traveling more than three trips per month can receive discounts under the "Staten Island Bridges Plan" ($9.25 per trip for cars).</p>
+                           <p>Website for the Outerbridge Crossing Bridge: <a href="https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html" target="_blank">https://www.panynj.gov/bridges-tunnels/en/Outerbridge-crossing.html</a></p>
+                        </section>
+                     </div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="modal" class="modal">
+         <div class="modal-content">
+            <div class="modal-header">
+               <div class="close-layer"> <span class="close">&times;</span></div>
+            </div>
+            <div class="modal-body" id="modal-content">
+            </div>
+            <div  class="modal-footer">
+               <a href="new_jersey_ez-pass.html" target="_blank">
+               <strong>Details for all New Jersey Toll Roads, Bridges and Tunnels</strong>
+               </a>
+            </div>
+         </div>
+      </div>
+      <script src="genmaps_d.js"></script>
+      <script>
+         var modal = document.getElementById("modal");
+          
+         // Get the <span> element that closes the modal
+         var span = document.getElementsByClassName("close")[0];
+         
+         // When the user clicks on <span> (x), close the modal
+         span.onclick = function() {
+         modal.style.display = "none";
+         }
+         
+         // When the user clicks anywhere outside of the modal, close it
+         window.onclick = function(event) {
+            if (event.target == modal) {
+               modal.style.display = "none";
+            }
+             
+         }
+         
+         document.onkeydown = function(event) {        
+            if (event.keyCode == 27) {
+               console.log("ESC")
+               modal.style.display = "none";
+            }
+         }
+      </script>
+   </body>
+</html>

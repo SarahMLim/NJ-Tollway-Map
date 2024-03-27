@@ -1,0 +1,233 @@
+[
+    {
+        "lat": 39.681068000,
+        "lng": -75.470803610,
+        "type": "interchange",
+        "name": "Delaware Memorial Bridge",
+        "description": "Delaware Memorial Bridge – Carneys Point"
+    },
+    {
+        "lat": 39.685232000,
+        "lng": -75.447561000,
+        "type": "interchange",
+        "name": "Delaware Memorial Bridge toll Plaza",
+        "description": "Delaware Memorial Bridge toll Plaza – Penn's Grove"
+    },
+    {
+        "lat": 39.753710270,
+        "lng": -75.276005000,
+        "type": "interchange",
+        "name": "Swedesboro",
+        "description": "Swedesboro – Swedesboro"
+    },
+    {
+        "lat": 39.859980000,
+        "lng": -75.072659400,
+        "type": "interchange",
+        "name": "Woodbury",
+        "description": "Woodbury – Woodbury"
+    },
+    {
+        "lat": 39.931375000,
+        "lng": -74.952662000,
+        "type": "interchange",
+        "name": "Mt. Laurel / Camden",
+        "description": "Mt. Laurel / Camden – Mount Laurel"
+    },
+    {
+        "lat": 40.024910500,
+        "lng": -74.823079720,
+        "type": "interchange",
+        "name": "Burlington",
+        "description": "Burlington – Burlington"
+    },
+    {
+        "lat": 40.115500000,
+        "lng": -74.825200000,
+        "type": "interchange",
+        "name": "Delaware River Bridge",
+        "description": "Delaware River Bridge – Burlington"
+    },
+    {
+        "lat": 40.101363800,
+        "lng": -74.789516380,
+        "type": "interchange",
+        "name": "US 130",
+        "description": "US 130 – Burlington"
+    },
+    {
+        "lat": 40.096121000,
+        "lng": -74.730725000,
+        "type": "interchange",
+        "name": "NJTP Extension to Pennsylvania Turnpike",
+        "description": "NJTP Extension to Pennsylvania Turnpike – Bordentown"
+    },
+    {
+        "lat": 40.124737500,
+        "lng": -74.699775000,
+        "type": "interchange",
+        "name": "Bordentown",
+        "description": "Bordentown – Bordentown"
+    },
+    {
+        "lat": 40.192487000,
+        "lng": -74.602505270,
+        "type": "interchange",
+        "name": "I–195",
+        "description": "I–195 – Allentown"
+    },
+    {
+        "lat": 40.264678050,
+        "lng": -74.510916380,
+        "type": "interchange",
+        "name": "Hightstown",
+        "description": "Hightstown – Hightstown"
+    },
+    {
+        "lat": 40.348400000,
+        "lng": -74.473934720,
+        "type": "interchange",
+        "name": "Jamesburg",
+        "description": "Jamesburg – Jamesburg"
+    },
+    {
+        "lat": 40.476660830,
+        "lng": -74.406059720,
+        "type": "interchange",
+        "name": "New Brunswick",
+        "description": "New Brunswick – New Brunswick"
+    },
+    {
+        "lat": 40.525618050,
+        "lng": -74.342281000,
+        "type": "interchange",
+        "name": "I–287 / NJ 440/Outerbridge Crossing",
+        "description": "I–287 / NJ 440/Outerbridge Crossing – Edison"
+    },
+    {
+        "lat": 40.542024000,
+        "lng": -74.301225830,
+        "type": "interchange",
+        "name": "Garden State Pkwy.",
+        "description": "Garden State Pkwy. – Woodbridge"
+    },
+    {
+        "lat": 40.594468300,
+        "lng": -74.234565000,
+        "type": "interchange",
+        "name": "Carteret",
+        "description": "Carteret – Carteret"
+    },
+    {
+        "lat": 40.641500500,
+        "lng": -74.205749720,
+        "type": "interchange",
+        "name": "I–278",
+        "description": "I–278 – Elizabeth"
+    }
+ {
+        "lat": 40.665403050,
+        "lng": -74.181835000,
+        "type": "interchange",
+        "name": "Newark Liberty Int'l/EWR / Elizabeth Seaport",
+        "description": "Newark Liberty Int'l/EWR / Elizabeth Seaport – Newark"
+    },
+    {
+        "lat": 40.704468300,
+        "lng": -74.152898050,
+        "type": "interchange",
+        "name": "Newark Liberty Int'l/EWR / I–78",
+        "description": "Newark Liberty Int'l/EWR / I–78 – Newark"
+    },
+    {
+        "lat": 40.686099000,
+        "lng": -74.096544000,
+        "type": "interchange",
+        "name": "NJ 440 / Bayonne",
+        "description": "NJ 440 / Bayonne – Bayonne"
+    },
+    {
+        "lat": 40.700959000,
+        "lng": -74.068720000,
+        "type": "interchange",
+        "name": "Bayview Avenue / Jersey City",
+        "description": "Bayview Avenue / Jersey City – Jersey City",
+        "notes": "Liberty State Park"
+    },
+    {
+        "lat": 40.707372000,
+        "lng": -74.059958000,
+        "type": "interchange",
+        "name": "Liberty Science Center",
+        "description": "Liberty Science Center – Jersey City",
+        "notes": "Park and Ride"
+    },
+    {
+        "lat": 40.720945000,
+        "lng": -74.055176000,
+        "type": "interchange",
+        "name": "Christopher Columbus Drive",
+        "description": "Christopher Columbus Drive – Jersey City",
+        "notes": "Exits to Montgomery St."
+    },
+    {
+        "lat": 40.728716940,
+        "lng": -74.128660830,
+        "type": "interchange",
+        "name": "Newark / Jersey City",
+        "description": "Newark / Jersey City – Jersey City"
+    },
+    {
+        "lat": 40.729732000,
+        "lng": -74.036005000,
+        "type": "interchange",
+        "name": "Holland Tunnel",
+        "description": "Holland Tunnel – Jersey City"
+    },
+    {
+        "lat": 40.755105000,
+        "lng": -74.117802700,
+        "type": "interchange",
+        "name": "Newark / The Oranges",
+        "description": "Newark / The Oranges – East Orange"
+    },
+    {
+        "lat": 40.761598000,
+        "lng": -74.077028050,
+        "type": "interchange",
+        "name": "Secaucus Transfer Station",
+        "description": "Secaucus Transfer Station – Jersey City"
+    },
+    {
+        "lat": 40.776613050,
+        "lng": -74.058400830,
+        "type": "interchange",
+        "name": "NJ 3 / NJ 495 / Lincoln Tunnel - SB On/NB Off",
+        "description": "NJ 3 / NJ 495 / Lincoln Tunnel - SB On/NB Off – Jersey City"
+    },
+    {
+        "lat": 40.800735000,
+        "lng": -74.074609000,
+        "type": "interchange",
+        "name": "NJ 3 / Sportsplex",
+        "description": "NJ 3 / Sportsplex – Newark",
+        "notes": "E. Rutherford"
+    },
+    {
+        "lat": 40.789747000,
+        "lng": -74.047827000,
+        "type": "interchange",
+        "name": "NJ 3 / NJ 495 / Lincoln Tunnel - SB Off/NB On",
+        "description": "NJ 3 / NJ 495 / Lincoln Tunnel - SB Off/NB On – Union City"
+    },
+    {
+        "lat": 40.861661940,
+        "lng": -74.011871600,
+        "type": "interchange",
+        "name": "I–80 / George Washington Bridge",
+        "description": "I–80 / George Washington Bridge – Fort Lee"
+    }
+]
+
+
+
